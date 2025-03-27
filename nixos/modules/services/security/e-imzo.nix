@@ -1,10 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  cfg = config.services.e-imzo;
+{ config, lib, pkgs, ... }:
+let cfg = config.services.e-imzo;
 in {
   options = with lib; {
     services.e-imzo = {
@@ -12,7 +7,8 @@ in {
 
       package = mkPackageOption pkgs "e-imzo" {
         example = "unstable.e-imzo";
-        extraDescription = "Feel free to use either unstable or your own custom e-imzo with this module.";
+        extraDescription =
+          "Feel free to use either unstable or your own custom e-imzo with this module.";
       };
     };
   };
@@ -21,11 +17,11 @@ in {
     systemd.user.services.e-imzo = {
       enable = true;
       description = "E-IMZO, uzbek state web signing service";
-      documentation = ["https://github.com/xinux-org/e-imzo"];
+      documentation = [ "https://github.com/xinux-org/e-imzo" ];
 
-      after = ["network-online.target" "graphical.target"];
-      wants = ["network-online.target" "graphical.target"];
-      wantedBy = ["default.target"];
+      after = [ "network-online.target" "graphical.target" ];
+      wants = [ "network-online.target" "graphical.target" ];
+      wantedBy = [ "default.target" ];
 
       serviceConfig = {
         Type = "simple";
