@@ -17,6 +17,7 @@
 ```
 git fetch upstream
 git rebase upstream/master 
+git push -f
 # change branch and do it again if you want to update
 ```
 
