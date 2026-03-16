@@ -13,6 +13,13 @@
   <a href="https://opencollective.com/nixos"><img src="https://opencollective.com/nixos/tiers/supporter/badge.svg?label=supporters&color=brightgreen" alt="Open Collective supporters" /></a>
 </p>
 
+## Fork updating
+```
+git fetch upstream
+git rebase upstream/master 
+# change branch and do it again if you want to update
+```
+
 [Nixpkgs](https://github.com/nixos/nixpkgs) is a collection of over 120,000 software packages that can be installed with the [Nix](https://nixos.org/nix/) package manager.
 It also implements [NixOS](https://nixos.org/nixos/), a purely-functional Linux distribution.
 
