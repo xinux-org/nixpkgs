@@ -836,7 +836,7 @@ in
     importTOML :: Path -> Any
     ```
   */
-  importTOML = path: fromTOML (builtins.readFile path);
+  importTOML = path: fromTOML (readFile path);
 
   /**
     `warn` *`message`* *`value`*
