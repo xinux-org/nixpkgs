@@ -14,8 +14,13 @@
 </p>
 
 ## Fork updating
-```
+```bash
+# pulling changes on SOME BRANCH
+git config pull.rebase true
+git pull
 git fetch upstream
+
+# pushshing on master OR other nixxx-xxx
 git rebase upstream/master 
 git push -f
 # change branch and do it again if you want to update
