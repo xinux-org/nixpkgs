@@ -9,16 +9,16 @@
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "lisette";
-  version = "0.1.2";
+  version = "0.1.9";
 
   src = fetchFromGitHub {
     owner = "ivov";
     repo = "lisette";
     tag = "lisette-v${finalAttrs.version}";
-    hash = "sha256-wUd4LjwbsW5hS2VAbzzq9oDDPLbdXie6JmkuOEBsjmA=";
+    hash = "sha256-9fjnYYoW3wwoJ+YV89dThSlWljNG6Jaa51PMc5DqtFI=";
   };
 
-  cargoHash = "sha256-E+8eFfftyrIGNfddQqDmmfPpv1FyYg2u00+KKru+B0Y=";
+  cargoHash = "sha256-XOMr8oDV82BgXfLc8oHqm8WAvmEHJjFGVmprxvso1cE=";
 
   preCheck = ''
     export NO_COLOR=true

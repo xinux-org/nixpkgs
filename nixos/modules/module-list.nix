@@ -61,6 +61,7 @@
   ./hardware/cpu/amd-ryzen-smu.nix
   ./hardware/cpu/amd-sev.nix
   ./hardware/cpu/intel-microcode.nix
+  ./hardware/cpu/intel-npu.nix
   ./hardware/cpu/intel-sgx.nix
   ./hardware/cpu/x86-msr.nix
   ./hardware/decklink.nix
@@ -256,6 +257,7 @@
   ./programs/lazygit.nix
   ./programs/less.nix
   ./programs/liboping.nix
+  ./programs/librepods.nix
   ./programs/lix.nix
   ./programs/localsend.nix
   ./programs/mdevctl.nix
@@ -1204,6 +1206,7 @@
   ./services/networking/frr.nix
   ./services/networking/g3proxy.nix
   ./services/networking/gdomap.nix
+  ./services/networking/geph.nix
   ./services/networking/ghostunnel.nix
   ./services/networking/git-daemon.nix
   ./services/networking/globalprotect-vpn.nix
@@ -1342,6 +1345,7 @@
   ./services/networking/pihole-ftl.nix
   ./services/networking/pixiecore.nix
   ./services/networking/pleroma.nix
+  ./services/networking/porxie.nix
   ./services/networking/powerdns.nix
   ./services/networking/pppd.nix
   ./services/networking/pptpd.nix
@@ -1586,6 +1590,7 @@
   ./services/video/go2rtc/default.nix
   ./services/video/mediamtx.nix
   ./services/video/mirakurun.nix
+  ./services/video/motioneye.nix
   ./services/video/photonvision.nix
   ./services/video/ustreamer.nix
   ./services/video/v4l2-relayd.nix
@@ -1755,6 +1760,7 @@
   ./services/web-apps/reposilite.nix
   ./services/web-apps/rimgo.nix
   ./services/web-apps/rss-bridge.nix
+  ./services/web-apps/rsshub.nix
   ./services/web-apps/rutorrent.nix
   ./services/web-apps/screego.nix
   ./services/web-apps/selfoss.nix
@@ -1939,6 +1945,7 @@
   ./system/boot/unl0kr.nix
   ./system/boot/uvesafb.nix
   ./system/boot/zram-as-tmp.nix
+  ./system/boot/zswap.nix
   ./system/etc/etc-activation.nix
   ./system/service/systemd/system.nix
   ./system/service/systemd/user.nix

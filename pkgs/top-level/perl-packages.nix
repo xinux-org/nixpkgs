@@ -9818,7 +9818,7 @@ with self;
     };
 
     nativeBuildInputs = [
-      pkgs.mysql80 # for mysql_config
+      pkgs.mysql84 # for mysql_config
     ];
     buildInputs = [
       DevelChecklib
@@ -9828,6 +9828,7 @@ with self;
       pkgs.libmysqlconnectorcpp
       pkgs.libxcrypt
       pkgs.openssl
+      pkgs.zlib
       pkgs.zstd
     ];
     propagatedBuildInputs = [ DBI ];
@@ -25312,10 +25313,10 @@ with self;
 
   NetCIDRLite = buildPerlPackage {
     pname = "Net-CIDR-Lite";
-    version = "0.22";
+    version = "0.23";
     src = fetchurl {
-      url = "mirror://cpan/authors/id/S/ST/STIGTSP/Net-CIDR-Lite-0.22.tar.gz";
-      hash = "sha256-QxfYyzQaYXueCIjaQ8Cc3//8sMnt97jJko10KlY7hRc=";
+      url = "mirror://cpan/authors/id/S/ST/STIGTSP/Net-CIDR-Lite-0.23.tar.gz";
+      hash = "sha256-mlgnjkmgjN65vsAc7N06lb5zbQ59TQXRP5COOj/hDTI=";
     };
     meta = {
       description = "Perl extension for merging IPv4 or IPv6 CIDR addresses";

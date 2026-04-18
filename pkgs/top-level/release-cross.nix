@@ -84,6 +84,7 @@ let
     mesa = nativePlatforms;
     rustc = nativePlatforms;
     cargo = nativePlatforms;
+    fd = nativePlatforms;
   };
 
   gnuCommon = recursiveUpdate common {
@@ -290,10 +291,6 @@ in
   x86_64-freebsd = mapTestOnCross systems.examples.x86_64-freebsd common;
   x86_64-netbsd = mapTestOnCross systems.examples.x86_64-netbsd common;
   x86_64-openbsd = mapTestOnCross systems.examples.x86_64-openbsd common;
-
-  # we test `embedded` instead of `linuxCommon` because very few packages
-  # successfully cross-compile to Redox so far
-  x86_64-redox = mapTestOnCross systems.examples.x86_64-unknown-redox embedded;
 
   # Cross-built bootstrap tools for every supported platform
   bootstrapTools =

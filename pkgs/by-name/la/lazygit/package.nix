@@ -8,13 +8,13 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "lazygit";
-  version = "0.60.0";
+  version = "0.61.1";
 
   src = fetchFromGitHub {
     owner = "jesseduffield";
     repo = "lazygit";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-BTcm3wF0bXIGsheDUv437aGO2TgU+oKXYqfagW0N8DQ=";
+    hash = "sha256-sFmOHsYs39i4mSH/CnetWFBQBviv5QsP0qfCSkaEJZE=";
   };
 
   vendorHash = null;
@@ -46,7 +46,6 @@ buildGoModule (finalAttrs: {
       khaneliman
       starsep
       sigmasquadron
-      kaynetik
     ];
     mainProgram = "lazygit";
   };
