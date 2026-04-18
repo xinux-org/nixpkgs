@@ -149,6 +149,7 @@ in
     lib-extend = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./nixos-test-driver/lib-extend.nix { };
     node-name = runTest ./nixos-test-driver/node-name.nix;
     busybox = runTest ./nixos-test-driver/busybox.nix;
+    ssh-backdoor = runTestOn [ "x86_64-linux" ] ./nixos-test-driver/ssh-backdoor.nix;
     console-log = runTest ./nixos-test-driver/console-log.nix;
     containers = runTest ./nixos-test-driver/containers.nix;
     driver-timeout =
@@ -727,7 +728,9 @@ in
   # 9pnet_virtio used to mount /nix partition doesn't support
   # hibernation. This test happens to work on x86_64-linux but
   # not on other platforms.
-  hibernate = handleTestOn [ "x86_64-linux" ] ./hibernate.nix { };
+  hibernate = handleTestOn [ "x86_64-linux" ] ./hibernate.nix {
+    systemdStage1 = false;
+  };
   hibernate-systemd-stage-1 = handleTestOn [ "x86_64-linux" ] ./hibernate.nix {
     systemdStage1 = true;
   };
@@ -769,8 +772,13 @@ in
   };
   influxdb = runTest ./influxdb.nix;
   influxdb2 = runTest ./influxdb2.nix;
-  initrd-luks-empty-passphrase = runTest ./initrd-luks-empty-passphrase.nix;
-  initrd-network-openvpn = handleTestOn [ "x86_64-linux" "i686-linux" ] ./initrd-network-openvpn { };
+  initrd-luks-empty-passphrase = runTest {
+    imports = [ ./initrd-luks-empty-passphrase.nix ];
+    _module.args.systemdStage1 = false;
+  };
+  initrd-network-openvpn = handleTestOn [ "x86_64-linux" "i686-linux" ] ./initrd-network-openvpn {
+    systemdStage1 = false;
+  };
   initrd-network-ssh = handleTest ./initrd-network-ssh { };
   initrd-secrets = handleTest ./initrd-secrets.nix { };
   initrd-secrets-changing = handleTest ./initrd-secrets-changing.nix { };
@@ -778,8 +786,8 @@ in
   input-remapper = runTest ./input-remapper.nix;
   inspircd = runTest ./inspircd.nix;
   installed-tests = recurseIntoAttrs (handleTest ./installed-tests { });
-  installer = handleTest ./installer.nix { };
-  installer-systemd-stage-1 = handleTest ./installer-systemd-stage-1.nix { };
+  installer = handleTest ./installer.nix { systemdStage1 = false; };
+  installer-systemd-stage-1 = handleTest ./installer.nix { systemdStage1 = true; };
   intune = runTest ./intune.nix;
   invidious = runTest ./invidious.nix;
   invoiceplane = runTest ./invoiceplane.nix;
@@ -1296,6 +1304,7 @@ in
   polaris = runTest ./polaris.nix;
   pomerium = handleTestOn [ "x86_64-linux" ] ./pomerium.nix { };
   portunus = runTest ./portunus.nix;
+  porxie = runTest ./porxie.nix;
   postfix = handleTest ./postfix.nix { };
   postfix-raise-smtpd-tls-security-level =
     handleTest ./postfix-raise-smtpd-tls-security-level.nix
@@ -1424,6 +1433,7 @@ in
   rspamd-trainer = runTest ./rspamd-trainer.nix;
   rss-bridge = handleTest ./web-apps/rss-bridge { };
   rss2email = handleTest ./rss2email.nix { };
+  rsshub = runTest ./web-apps/rsshub.nix;
   rstp = runTest ./rstp.nix;
   rstudio-server = runTest ./rstudio-server.nix;
   rsync = runTest ./rsync.nix;
@@ -1510,6 +1520,7 @@ in
   step-ca = handleTestOn [ "x86_64-linux" ] ./step-ca.nix { };
   stirling-pdf-desktop = runTest ./stirling-pdf-desktop.nix;
   stratis = handleTest ./stratis { };
+  strichliste = runTest ./web-apps/strichliste.nix;
   strongswan-swanctl = runTest ./strongswan-swanctl.nix;
   stub-ld = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./stub-ld.nix { };
   stunnel = import ./stunnel.nix { inherit runTest; };
@@ -1603,7 +1614,10 @@ in
   systemd-pstore = runTest ./systemd-pstore.nix;
   systemd-repart = handleTest ./systemd-repart.nix { };
   systemd-resolved = runTest ./systemd-resolved.nix;
-  systemd-shutdown = runTest ./systemd-shutdown.nix;
+  systemd-shutdown = runTest {
+    imports = [ ./systemd-shutdown.nix ];
+    _module.args.systemdStage1 = false;
+  };
   systemd-ssh-proxy = runTest ./systemd-ssh-proxy.nix;
   systemd-sysupdate = runTest ./systemd-sysupdate.nix;
   systemd-sysusers-immutable = runTest ./systemd-sysusers-immutable.nix;
@@ -1645,6 +1659,7 @@ in
   tinydns = runTest ./tinydns.nix;
   tinyproxy = runTest ./tinyproxy.nix;
   tinywl = runTest ./tinywl.nix;
+  tlshd = runTest ./tlshd.nix;
   tlsrpt = runTest ./tlsrpt.nix;
   tmate-ssh-server = runTest ./tmate-ssh-server.nix;
   tomcat = runTest ./tomcat.nix;

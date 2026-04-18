@@ -5,18 +5,18 @@
   nix-update-script,
   openssl,
   perl,
-  zig,
+  zig_0_15,
   pkg-config,
   stdenv,
   vimUtils,
 }:
 let
-  version = "0.5.1";
+  version = "0.5.2";
   src = fetchFromGitHub {
     owner = "dmtrKovalenko";
     repo = "fff.nvim";
     tag = "v${version}";
-    hash = "sha256-pFOmYa6JgGsLefkqgBtS1IvQJ+dVnkyLTXObxrfhZno=";
+    hash = "sha256-rv33dRf53m9iJwRl56z9oU0EuY1wUChsZyHOi/3gv4A=";
   };
   fff-nvim-lib = rustPlatform.buildRustPackage {
     pname = "fff-nvim-lib";
@@ -59,7 +59,7 @@ let
       # Allow undefined symbols on Darwin - they will be provided by Neovim's LuaJIT runtime
       RUSTFLAGS = lib.optionalString stdenv.hostPlatform.isDarwin "-C link-arg=-undefined -C link-arg=dynamic_lookup";
 
-      ZIG = lib.getExe zig; # zlob requires zig
+      ZIG = lib.getExe zig_0_15; # zlob requires zig
     };
   };
 in

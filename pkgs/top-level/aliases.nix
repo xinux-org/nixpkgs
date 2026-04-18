@@ -372,6 +372,7 @@ mapAliases {
   belcard = throw "'belcard' has been moved to 'linphonePackages.belcard'"; # Added 2025-09-20
   belle-sip = throw "'belle-sip' has been moved to 'linphonePackages.belle-sip'"; # Added 2025-09-20
   belr = throw "'belr' has been moved to 'linphonePackages.belr'"; # Added 2025-09-20
+  bencode = throw "'bencode' has been removed because it is unmaintained upstream"; # Added 2026-04-09
   bfc = throw "bfc has been removed, as it does not build with supported LLVM versions"; # Added 2025-08-10
   bfr = throw "bfr has been removed, did not update since 2004, fails to build on gcc-15, no homepage"; # Added 2026-01-28
   bindle = throw "bindle has been removed since it is vulnerable to CVE-2025-62518 and upstream has been archived"; # Added 2025-10-24
@@ -413,6 +414,7 @@ mapAliases {
   bwidget = throw "'bwidget' has been renamed to/replaced by 'tclPackages.bwidget'"; # Converted to throw 2025-10-27
   bzrtp = throw "'bzrtp' has been moved to 'linphonePackages.bzrtp'"; # Added 2025-09-20
   c0 = throw "'c0' has been removed due to being broken for more than a year; see RFC 180"; # Added 2026-02-05
+  caido = warnAlias "'caido' has been split into 'caido-cli' and 'caido-desktop'." caido-desktop; # Added 2026-03-03
   calculix = throw "'calculix' has been renamed to/replaced by 'calculix-ccx'"; # Converted to throw 2025-10-27
   calligra = throw "'calligra' has been renamed to/replaced by 'kdePackages.calligra'"; # Converted to throw 2025-10-27
   callPackage_i686 = throw "'callPackage_i686' has been renamed to/replaced by 'pkgsi686Linux.callPackage'"; # Converted to throw 2025-10-27
@@ -976,6 +978,7 @@ mapAliases {
   julia_19-bin = throw "Julia 1.9 has reached its end of life and 'julia_19-bin' has been removed. Please use a supported version."; # Added 2025-10-29
   k3s_1_30 = throw "'k3s_1_30' has been removed from nixpkgs as it has reached end of life"; # Added 2025-09-01
   k3s_1_31 = throw "'k3s_1_31' has been removed from nixpkgs as it has reached end of life"; # Added 2025-12-08
+  k3s_1_32 = throw "'k3s_1_32' has been removed from nixpkgs as it has reached end of life"; # Added 2026-03-31
   kak-lsp = throw "'kak-lsp' has been renamed to/replaced by 'kakoune-lsp'"; # Converted to throw 2025-10-27
   kanidm = throw "'kanidm' alias has been removed. You must use a versioned package, e.g. 'kanidm_1_x'."; # Added 2026-01-29
   kanidm_1_4 = throw "'kanidm_1_4' has been removed as it has reached end of life"; # Added 2025-06-18
@@ -1174,6 +1177,7 @@ mapAliases {
   linux_6_17 = linuxKernel.kernels.linux_6_17;
   linux_6_18 = linuxKernel.kernels.linux_6_18;
   linux_6_19 = linuxKernel.kernels.linux_6_19;
+  linux_7_0 = linuxKernel.kernels.linux_7_0;
   linux_ham = throw "linux_ham has been removed in favour of the standard kernel packages"; # Added 2025-06-24
   linux_hardened = throw "linux_hardened has been removed due to lack of maintenance"; # Added 2026-03-18
   linux_latest-libre = throw "linux_latest_libre has been removed due to lack of maintenance"; # Added 2025-10-01
@@ -1208,6 +1212,7 @@ mapAliases {
   linuxPackages_6_17 = linuxKernel.packages.linux_6_17;
   linuxPackages_6_18 = linuxKernel.packages.linux_6_18;
   linuxPackages_6_19 = linuxKernel.packages.linux_6_19;
+  linuxPackages_7_0 = linuxKernel.packages.linux_7_0;
   linuxPackages_ham = throw "linux_ham has been removed in favour of the standard kernel packages"; # Added 2025-06-24
   linuxPackages_hardened = throw "linuxPackages_hardened has been removed due to lack of maintenance"; # Added 2026-03-18
   linuxPackages_latest-libre = throw "linux_latest_libre has been removed due to lack of maintenance"; # Added 2025-10-01
@@ -1399,6 +1404,7 @@ mapAliases {
   mutter46 = throw "'mutter46' has been removed, no longer used by Pantheon"; # Added 2026-01-24
   muzika = throw "muzika was discontinued upstream in november 2024"; # Added 2025-12-15;
   mx-puppet-discord = throw "mx-puppet-discord was removed since the packaging was unmaintained and was the sole user of sha1 hashes in nixpkgs"; # Added 2025-07-24
+  mysql80 = throw "'mysql80' reached end of life on 2026-04-30 and has been removed."; # Added 2026-04-08
   mysql-client = throw "mysql-client has been replaced by mariadb.client"; # Converted to throw 2025-10-26
   n98-magerun = throw "n98-magerun doesn't support new PHP newer than 8.1"; # Added 2025-10-03
   nagiosPluginsOfficial = throw "'nagiosPluginsOfficial' has been renamed to/replaced by 'monitoring-plugins'"; # Converted to throw 2025-10-27
@@ -1454,6 +1460,7 @@ mapAliases {
   nginxQuic = throw "'nginxQuic' has been removed. QUIC support is now available in the default nginx builds.";
   ngrid = throw "'ngrid' has been removed as it has been unmaintained upstream and broken"; # Added 2025-11-15
   nimbo = throw "'nimbo' has been removed due to being archived upstream."; # Added 2026-01-18
+  nitrokey-fido2-firmware = throw "'nitrokey-fido2-firmware' has been removed as it was broken and unmaintained upstream since 2022"; # Added 2026-03-23
   nix-direnv-flakes = throw "'nix-direnv-flakes' has been renamed to/replaced by 'nix-direnv'"; # Converted to throw 2025-10-27
   nix-ld-rs = throw "'nix-ld-rs' has been renamed to/replaced by 'nix-ld'"; # Converted to throw 2025-10-27
   nix-linter = throw "nix-linter has been removed as it was broken for 3 years and unmaintained upstream"; # Added 2025-09-06
@@ -1480,8 +1487,8 @@ mapAliases {
   nixStable = throw "'nixStable' has been renamed to/replaced by 'nixVersions.stable'"; # Converted to throw 2025-10-27
   nm-tray = throw "'nm-tray' has been removed, as it only works with Plasma 5"; # Added 2025-08-30
   node2nix = throw "node2nix has been removed because it was only used to maintain the now-removed nodePackages set. Use the newer builders in nixpkgs instead, such as buildNpmPackage"; # Added 2026-03-03
-  nodePackages = throw "nodePackages has been removed because it was unmaintainable within nixpkgs"; # Added 2026-03-03
-  nodePackages_latest = throw "nodePackages has been removed because it was unmaintainable within nixpkgs"; # Added 2026-03-03
+  nodePackages = throw "nodePackages has been removed. Many packages are now available at the top level (e.g. `pkgs.package-name`). Check on https://search.nixos.org to see if the package is still available."; # Added 2026-03-03
+  nodePackages_latest = throw "nodePackages has been removed. Many packages are now available at the top level (e.g. `pkgs.package-name`). Check on https://search.nixos.org to see if the package is still available."; # Added 2026-03-03
   nofi = throw "'nofi' has been removed due to being archived upstream."; # Added 2026-01-16
   nomacs-qt6 = nomacs; # Added 2025-08-30
   norouter = throw "norouter has been removed because it has been marked as broken since at least November 2024."; # Added 2025-09-29
@@ -1985,7 +1992,6 @@ mapAliases {
   ticpp = throw "'ticpp' has been removed due to being unmaintained"; # Added 2025-09-10
   timescaledb = throw "'timescaledb' has been removed. Use 'postgresqlPackages.timescaledb' instead."; # Added 2025-07-19
   tinyxml2 = throw "The 'tinyxml2' alias has been removed, use 'tinyxml' for https://sourceforge.net/projects/tinyxml/ or 'tinyxml-2' for https://github.com/leethomason/tinyxml2"; # Added 2025-10-11
-  tix = throw "'tix' has been renamed to/replaced by 'tclPackages.tix'"; # Converted to throw 2025-10-27
   tkcvs = throw "'tkcvs' has been renamed to/replaced by 'tkrev'"; # Converted to throw 2025-10-27
   tkgate = throw "'tkgate' has been removed as it is unmaintained"; # Added 2025-05-17
   tkimg = throw "'tkimg' has been renamed to/replaced by 'tclPackages.tkimg'"; # Converted to throw 2025-10-27
@@ -2079,7 +2085,7 @@ mapAliases {
   warmux = throw "'warmux' has been removed as it is unmaintained and broken"; # Added 2025-11-03
   warsow = throw "'warsow' has been removed as it is unmaintained and is broken"; # Added 2025-10-09
   warsow-engine = throw "'warsow-engine' has been removed as it is unmaintained and is broken"; # Added 2025-10-09
-  wasm-bindgen-cli = wasm-bindgen-cli_0_2_114;
+  wasm-bindgen-cli = wasm-bindgen-cli_0_2_117;
   wasm-strip = throw "'wasm-strip' has been removed due to upstream deprecation. Use 'wabt' instead."; # Added 2025-11-06
   wavebox = throw "'wavebox' has been removed due to lack of maintenance in nixpkgs"; # Added 2025-06-24
   wavm = throw "wavm has been removed, as it does not build with supported LLVM versions"; # Added 2025-08-10
@@ -2485,7 +2491,6 @@ mapAliases {
   zabbix72 = throw "'zabbix72' was removed as it has reached its end of life"; # Added 2026-02-11
   zandronum-alpha = throw "'zandronum-alpha' has been removed as it was broken and the stable version has caught up"; # Added 2025-10-19
   zandronum-alpha-server = throw "'zandronum-alpha-server' has been removed as it was broken and the stable version has caught up"; # Added 2025-10-19
-  zashboard = throw "'zashboard' has been removed because upstream repository source code has been deleted"; # Added 2025-12-29
   zbackup = throw "'zbackup' has been removed due to being unmaintained upstream"; # Added 2025-08-22
   zdoom = throw "'zdoom' has been removed as it was broken and unmaintained upstream. Consider using UZDoom instead."; # Added 2026-04-04
   zeal-qt5 = warnAlias "'zeal-qt5' has been removed from nixpkgs. Please use 'zeal' instead" zeal; # Added 2025-08-31

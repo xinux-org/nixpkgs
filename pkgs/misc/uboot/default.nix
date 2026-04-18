@@ -34,10 +34,10 @@
 }@pkgs:
 
 let
-  defaultVersion = "2025.10";
+  defaultVersion = "2026.04";
   defaultSrc = fetchurl {
     url = "https://ftp.denx.de/pub/u-boot/u-boot-${defaultVersion}.tar.bz2";
-    hash = "sha256-tPAyhI5WzI8hOtWfkTLAhNu7YyvCkXbQJOWCIODv30o=";
+    hash = "sha256-rHwEuLcASSOwCk5dZpnF300hIzusn9ppDYz7wgn/8v0=";
   };
 
   # Dependencies for the tools need to be included as either native or cross,
