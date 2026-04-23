@@ -20,6 +20,9 @@
   "cmake-ctest-variables": [
     "index.html#cmake-ctest-variables"
   ],
+  "compiling-wasm32-wasip1-package": [
+    "index.html#compiling-wasm32-wasip1-package"
+  ],
   "coq-withPackages": [
     "index.html#coq-withPackages"
   ],
@@ -375,6 +378,9 @@
   ],
   "sec-build-helper-extendMkDerivation": [
     "index.html#sec-build-helper-extendMkDerivation"
+  ],
+  "sec-buildEnv-exceptions": [
+    "index.html#sec-buildEnv-exceptions"
   ],
   "sec-building-packages-with-llvm": [
     "index.html#sec-building-packages-with-llvm"
@@ -767,6 +773,12 @@
   "sec-treefmt-options-reference": [
     "index.html#sec-treefmt-options-reference"
   ],
+  "ssec-buildEnv-collisions": [
+    "index.html#ssec-buildEnv-collisions"
+  ],
+  "ssec-buildEnv-singleFileOutputs": [
+    "index.html#ssec-buildEnv-singleFileOutputs"
+  ],
   "ssec-cosmic-common-issues": [
     "index.html#ssec-cosmic-common-issues"
   ],
@@ -874,6 +886,9 @@
   ],
   "typst-package-scope-and-usage": [
     "index.html#typst-package-scope-and-usage"
+  ],
+  "using-tclrequirescheck": [
+    "index.html#using-tclrequirescheck"
   ],
   "var-go-buildTestBinaries": [
     "index.html#var-go-buildTestBinaries"
@@ -2178,6 +2193,12 @@
   ],
   "chap-special": [
     "index.html#chap-special"
+  ],
+  "sec-buildEnv": [
+    "index.html#sec-buildEnv"
+  ],
+  "sec-buildEnv-arguments": [
+    "index.html#sec-buildEnv-arguments"
   ],
   "sec-fakeNss": [
     "index.html#sec-fakeNss"

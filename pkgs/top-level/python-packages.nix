@@ -3634,6 +3634,8 @@ self: super: with self; {
 
   datasets = callPackage ../development/python-modules/datasets { };
 
+  datasets_3 = callPackage ../development/python-modules/datasets/3.nix { };
+
   datasette = callPackage ../development/python-modules/datasette { };
 
   datasette-publish-fly = callPackage ../development/python-modules/datasette-publish-fly { };
@@ -5627,6 +5629,8 @@ self: super: with self; {
 
   flash-attn = callPackage ../development/python-modules/flash-attn { };
 
+  flash-mla = callPackage ../development/python-modules/flash-mla { };
+
   flashinfer = callPackage ../development/python-modules/flashinfer { };
 
   flashtext = callPackage ../development/python-modules/flashtext { };
@@ -7150,8 +7154,6 @@ self: super: with self; {
 
   housekeeping = callPackage ../development/python-modules/housekeeping { };
 
-  howdoi = callPackage ../development/python-modules/howdoi { };
-
   hpack = callPackage ../development/python-modules/hpack { };
 
   hpccm = callPackage ../development/python-modules/hpccm { };
@@ -7640,6 +7642,8 @@ self: super: with self; {
   iocsearcher = callPackage ../development/python-modules/iocsearcher { };
 
   ioctl-opt = callPackage ../development/python-modules/ioctl-opt { };
+
+  iocx = callPackage ../development/python-modules/iocx { };
 
   iodata = callPackage ../development/python-modules/iodata { };
 
@@ -10192,8 +10196,6 @@ self: super: with self; {
 
   monkeyhex = callPackage ../development/python-modules/monkeyhex { };
 
-  monkeytype = callPackage ../development/python-modules/monkeytype { };
-
   monosat = callPackage pkgs.monosat.python { };
 
   monotonic = callPackage ../development/python-modules/monotonic { };
@@ -12251,6 +12253,8 @@ self: super: with self; {
 
   pdbfixer = callPackage ../development/python-modules/pdbfixer { };
 
+  pdf-oxide = callPackage ../development/python-modules/pdf-oxide { };
+
   pdf2docx = callPackage ../development/python-modules/pdf2docx { };
 
   pdf2image = callPackage ../development/python-modules/pdf2image { };
@@ -13596,6 +13600,8 @@ self: super: with self; {
 
   pydantic-graph = callPackage ../development/python-modules/pydantic-graph { };
 
+  pydantic-monty = callPackage ../development/python-modules/pydantic-monty { };
+
   pydantic-scim = callPackage ../development/python-modules/pydantic-scim { };
 
   pydantic-settings = callPackage ../development/python-modules/pydantic-settings { };
@@ -14379,8 +14385,6 @@ self: super: with self; {
   pymysql = callPackage ../development/python-modules/pymysql { };
 
   pymysqlsa = callPackage ../development/python-modules/pymysqlsa { };
-
-  pymystem3 = callPackage ../development/python-modules/pymystem3 { };
 
   pynac = callPackage ../development/python-modules/pynac { };
 
@@ -17658,6 +17662,10 @@ self: super: with self; {
     callPackage ../development/python-modules/shiboken6 { inherit (pkgs) cmake llvmPackages; }
   );
 
+  shiboken6-generator = toPythonModule (
+    callPackage ../development/python-modules/shiboken6-generator { inherit (pkgs) cmake llvmPackages; }
+  );
+
   shimmy = callPackage ../development/python-modules/shimmy { };
 
   shiny = callPackage ../development/python-modules/shiny { };
@@ -18421,6 +18429,8 @@ self: super: with self; {
   sqids = callPackage ../development/python-modules/sqids { };
 
   sqlalchemy = callPackage ../development/python-modules/sqlalchemy { };
+
+  sqlalchemy-adapter = callPackage ../development/python-modules/sqlalchemy-adapter { };
 
   sqlalchemy-citext = callPackage ../development/python-modules/sqlalchemy-citext { };
 
@@ -20384,6 +20394,8 @@ self: super: with self; {
   types-mysqlclient = callPackage ../development/python-modules/types-mysqlclient { };
 
   types-openpyxl = callPackage ../development/python-modules/types-openpyxl { };
+
+  types-paramiko = callPackage ../development/python-modules/types-paramiko { };
 
   types-pillow = callPackage ../development/python-modules/types-pillow { };
 

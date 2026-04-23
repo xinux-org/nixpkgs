@@ -168,6 +168,7 @@
   ./programs/appimage.nix
   ./programs/arp-scan.nix
   ./programs/atop.nix
+  ./programs/atuin.nix
   ./programs/ausweisapp.nix
   ./programs/autoenv.nix
   ./programs/autojump.nix
@@ -1698,6 +1699,7 @@
   ./services/web-apps/librespeed.nix
   ./services/web-apps/libretranslate.nix
   ./services/web-apps/limesurvey.nix
+  ./services/web-apps/linkding.nix
   ./services/web-apps/linkwarden.nix
   ./services/web-apps/lubelogger.nix
   ./services/web-apps/mainsail.nix
