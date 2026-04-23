@@ -4,7 +4,7 @@
   fetchFromGitHub,
   fetchPnpmDeps,
   electron_40,
-  nodejs,
+  nodejs-slim,
   pnpm_10_29_2,
   pnpmConfigHook,
   makeWrapper,
@@ -58,8 +58,8 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = [
-    nodejs
-    (nodejs.python.withPackages (ps: with ps; [ setuptools ]))
+    nodejs-slim
+    (nodejs-slim.python.withPackages (ps: with ps; [ setuptools ]))
     pnpm
     pnpmConfigHook
     makeWrapper
@@ -139,7 +139,7 @@ stdenv.mkDerivation (finalAttrs: {
       else
         "cp -r dist/linux-unpacked/{resources,LICENSE*} $out/opt/cherry-studio"
     }
-    install -Dm644 build/icon.png $out/share/icons/hicolor/1024x1024/apps/cherry-studio.png
+    install -Dm644 build/icon.png $out/share/icons/cherry-studio.png
     makeWrapper ${lib.getExe electron} $out/bin/cherry-studio \
       --inherit-argv0 \
       --add-flags $out/opt/cherry-studio/resources/app.asar \

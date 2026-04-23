@@ -51,16 +51,16 @@
   withAmqpRepl ? false,
 }:
 
-buildPythonPackage rec {
+buildPythonPackage (finalAttrs: {
   pname = "celery";
-  version = "5.6.2";
+  version = "5.6.3";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "celery";
     repo = "celery";
-    tag = "v${version}";
-    hash = "sha256-S84hLGwVVgxnUB6wnqU58tN56t/tQ79ZUni/iP5sx94=";
+    tag = "v${finalAttrs.version}";
+    hash = "sha256-5YPM8/AnCSjeDDMQ30kTNjPr6QdlUiqzzBadtmjqoNg=";
   };
 
   patches = lib.optionals (!withAmqpRepl) [
@@ -157,7 +157,7 @@ buildPythonPackage rec {
     pytest-xdist
     pytestCheckHook
   ]
-  ++ lib.concatAttrValues optional-dependencies;
+  ++ lib.concatAttrValues finalAttrs.passthru.optional-dependencies;
 
   disabledTestPaths = [
     # test_eventlet touches network
@@ -197,6 +197,10 @@ buildPythonPackage rec {
     # Flaky: Unclosed temporary file handle under heavy load (as in nixpkgs-review)
     "test_check_privileges_without_c_force_root_and_no_group_entry"
   ]
+  ++ lib.optionals (lib.versionAtLeast django.version "6.0") [
+    "test_is_pickled"
+    "test_cleanup"
+  ]
   ++ lib.optionals stdenv.hostPlatform.isDarwin [
     # Too many open files on hydra
     "test_cleanup"
@@ -212,9 +216,9 @@ buildPythonPackage rec {
   meta = {
     description = "Distributed task queue";
     homepage = "https://github.com/celery/celery/";
-    changelog = "https://github.com/celery/celery/blob/${src.tag}/Changelog.rst";
+    changelog = "https://github.com/celery/celery/blob/${finalAttrs.src.tag}/Changelog.rst";
     license = lib.licenses.bsd3;
     maintainers = with lib.maintainers; [ fab ];
     mainProgram = "celery";
   };
-}
+})
