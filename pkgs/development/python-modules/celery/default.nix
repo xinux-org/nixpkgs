@@ -154,8 +154,12 @@ buildPythonPackage (finalAttrs: {
     pytest-celery
     pytest-click
     pytest-timeout
-    pytest-xdist
     pytestCheckHook
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
+    # Using `pytest-xdist` leads to incomplete tests which hang `pytestRemoveBytecode`
+    # under `sandbox=false` (the default on Darwin).
+    pytest-xdist
   ]
   ++ lib.concatAttrValues finalAttrs.passthru.optional-dependencies;
 
@@ -193,6 +197,9 @@ buildPythonPackage (finalAttrs: {
     # https://github.com/celery/celery/blob/0527296acb1f1790788301d4395ba6d5ce2a9704/celery/platforms.py#L807-L814
     "test_regression_worker_startup_info"
     "test_check_privileges"
+
+    # FileNotFoundError: [Errno 2] No such file or directory: 'test.db'
+    "test_forget"
 
     # Flaky: Unclosed temporary file handle under heavy load (as in nixpkgs-review)
     "test_check_privileges_without_c_force_root_and_no_group_entry"

@@ -2393,8 +2393,6 @@ with pkgs;
 
   gnused = callPackage ../tools/text/gnused { };
 
-  gnutar = callPackage ../tools/archivers/gnutar { };
-
   inherit (callPackage ../development/tools/godot { })
     godot3
     godot3-export-templates
@@ -3128,12 +3126,10 @@ with pkgs;
   patchutils_0_4_2 = callPackage ../tools/text/patchutils/0.4.2.nix { };
 
   inherit (import ../servers/sql/percona-server pkgs)
-    percona-server_8_0
     percona-server_8_4
     percona-server
     ;
   inherit (import ../tools/backup/percona-xtrabackup pkgs)
-    percona-xtrabackup_8_0
     percona-xtrabackup_8_4
     percona-xtrabackup
     ;
@@ -6101,7 +6097,6 @@ with pkgs;
       callPackage ../os-specific/linux/bionic-prebuilt { };
 
   inherit (callPackage ../development/libraries/boost { inherit (buildPackages) boost-build; })
-    boost177
     boost178
     boost179
     boost180
@@ -6524,7 +6519,6 @@ with pkgs;
     icu64
     icu66
     icu67
-    icu69
     icu70
     icu71
     icu72
@@ -6577,6 +6571,8 @@ with pkgs;
       runHook postInstall
     '';
   });
+
+  itgmaniaPackages = recurseIntoAttrs (callPackage ../by-name/it/itgmania/packages.nix { });
 
   itk_5_2 = callPackage ../development/libraries/itk/5.2.x.nix {
     enableRtk = false;
@@ -7767,15 +7763,6 @@ with pkgs;
     ];
   };
 
-  sbcl_2_6_0 = wrapLisp {
-    pkg = callPackage ../development/compilers/sbcl { version = "2.6.0"; };
-
-    faslExt = "fasl";
-    flags = [
-      "--dynamic-space-size"
-      "3000"
-    ];
-  };
   sbcl_2_6_1 = wrapLisp {
     pkg = callPackage ../development/compilers/sbcl { version = "2.6.1"; };
     faslExt = "fasl";
@@ -7784,7 +7771,16 @@ with pkgs;
       "3000"
     ];
   };
-  sbcl = sbcl_2_6_1;
+  sbcl_2_6_3 = wrapLisp {
+    pkg = callPackage ../development/compilers/sbcl { version = "2.6.3"; };
+
+    faslExt = "fasl";
+    flags = [
+      "--dynamic-space-size"
+      "3000"
+    ];
+  };
+  sbcl = sbcl_2_6_3;
 
   sbclPackages = recurseIntoAttrs sbcl.pkgs;
 
@@ -10886,14 +10882,6 @@ with pkgs;
 
   zed-editor-fhs = zed-editor.fhs;
 
-  zgv = callPackage ../applications/graphics/zgv {
-    # Enable the below line for terminal display. Note
-    # that it requires sixel graphics compatible terminals like mlterm
-    # or xterm -ti 340
-    SDL = SDL_sixel;
-    SDL_image = SDL_image.override { SDL = SDL_sixel; };
-  };
-
   zynaddsubfx-fltk = zynaddsubfx.override {
     guiModule = "fltk";
   };
@@ -10910,12 +10898,19 @@ with pkgs;
 
   bitcoin = qt6Packages.callPackage ../applications/blockchains/bitcoin {
     withGui = true;
+    sqlite = sqlite.override {
+      zlib = null;
+    };
+    zeromq = zeromq.override {
+      enableCurve = false;
+      enableDrafts = false;
+      libsodium = null;
+    };
     inherit (darwin) autoSignDarwinBinariesHook;
   };
 
-  bitcoind = callPackage ../applications/blockchains/bitcoin {
+  bitcoind = bitcoin.override {
     withGui = false;
-    inherit (darwin) autoSignDarwinBinariesHook;
   };
 
   bitcoin-knots = libsForQt5.callPackage ../applications/blockchains/bitcoin-knots {
@@ -11428,18 +11423,9 @@ with pkgs;
 
   notus-scanner = with python3Packages; toPythonApplication notus-scanner;
 
-  openblas =
-    callPackage
-      (
-        # FIXME: migrate everything off make.nix on mass rebuild.
-        if stdenv.system == "aarch64-darwin" then
-          ../development/libraries/science/math/openblas
-        else
-          ../development/libraries/science/math/openblas/make.nix
-      )
-      {
-        inherit (llvmPackages) openmp;
-      };
+  openblas = callPackage ../development/libraries/science/math/openblas {
+    inherit (llvmPackages) openmp;
+  };
 
   # A version of OpenBLAS using 32-bit integers on all platforms for compatibility with
   # standard BLAS and LAPACK.
